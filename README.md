@@ -2,7 +2,7 @@ nanprod
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Computes the product over an array of values ignoring any values which are not numeric. 
+> Computes the product over an array of values ignoring any values which are not numeric.
 
 
 ## Installation
@@ -16,25 +16,59 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 
 ## Usage
 
+To use the module,
+
 ``` javascript
-var foo = require( 'compute-nanprod' );
+var nanprod = require( 'compute-nanprod' );
 ```
 
-#### foo( arr )
+#### nanprod( arr )
 
-What does this function do?
+Computes the product while ignoring non-numeric values.
 
+``` javascript
+var data = [ 1, NaN, 2, NaN, 1 ];
+
+var product = nanprod( data );
+// returns 2
+```
 
 ## Examples
 
 ``` javascript
-var foo = require( 'compute-nanprod' );
+var nanprod = require( 'compute-nanprod' );
+
+var data = new Array( 10 );
+
+for ( var i = 0; i < data.length; i++ ) {
+	if ( i%5 === 0 ) {
+		data[ i ] = NaN;
+	} else {
+		data[ i ] = Math.random() + 1;
+	}
+}
+
+console.log( nanprod( data ) );
+
 ```
 
 To run the example code from the top-level application directory,
 
 ``` bash
 $ node ./examples/index.js
+```
+
+
+## Notes
+
+The product of an array containing non-numeric values is equal to the product of an equivalent array which contains only the numeric values. Hence,
+
+``` javascript
+var d1 = [ 1, NaN, 2, 3, NaN ],
+    d2 = [ 1, 2, 3 ];
+
+console.log( nanprod( d1 ) === nanprod( d2 ) );
+// returns true
 ```
 
 
@@ -69,7 +103,7 @@ $ make view-cov
 ---
 ## License
 
-[MIT license](http://opensource.org/licenses/MIT). 
+[MIT license](http://opensource.org/licenses/MIT).
 
 
 ## Copyright
