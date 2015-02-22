@@ -25,7 +25,13 @@
   "keywords": [
     "compute.io",
     "compute",
-    "computation"
+    "computation",
+    "math",
+    "mathematics",
+    "statistics",
+    "stats",
+    "product",
+    "nan"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/nanprod/issues"
