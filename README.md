@@ -2,7 +2,7 @@ nanprod
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Computes the product over an array of values ignoring any values which are not numeric.
+> Computes the product of an array ignoring any values which are not numeric.
 
 
 ## Installation
