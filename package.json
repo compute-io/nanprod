@@ -1,6 +1,6 @@
 {
   "name": "compute-nanprod",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Computes the product of an array ignoring any non-numeric values. ",
   "author": {
     "name": "Philipp Burckhardt",
