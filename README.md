@@ -2,7 +2,7 @@ nanprod
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Computes the product of an array ignoring any values which are not numeric.
+> Computes the product of an array ignoring any non-numeric values.
 
 
 ## Installation
@@ -22,7 +22,7 @@ var nanprod = require( 'compute-nanprod' );
 
 #### nanprod( arr[, accessor] )
 
-Computes the product of an `array` while ignoring non-numeric values. For primitive `arrays`,
+Computes the product of an `array` ignoring any non-numeric values. For primitive `arrays`,
 
 ``` javascript
 var arr = [ 1, NaN, 2, NaN, 1 ];
