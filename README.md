@@ -16,22 +16,57 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 
 ## Usage
 
-To use the module,
-
 ``` javascript
 var nanprod = require( 'compute-nanprod' );
 ```
 
-#### nanprod( arr )
+#### nanprod( arr[, accessor] )
 
-Computes the product while ignoring non-numeric values.
+Computes the product of an `array` while ignoring non-numeric values. For primitive `arrays`,
 
 ``` javascript
-var data = [ 1, NaN, 2, NaN, 1 ];
+var arr = [ 1, NaN, 2, NaN, 1 ];
 
-var product = nanprod( data );
+var value = nanprod( arr );
 // returns 2
 ```
+
+For object `arrays`, provide an accessor `function` for accessing `array` values
+
+``` javascript
+var arr = [
+	[1,4],
+	[NaN,1],
+	[2,2],
+	[NaN,0],
+	[1,3]
+];
+
+function getValue( d ) {
+	return d[ 0 ];
+}
+
+var value = nanprod( arr, getValue );
+// returns 2
+```
+
+
+
+## Notes
+
+*	The product of an `array` containing non-numeric values is equal to the product of an equivalent `array` containing only the numeric values. Hence,
+
+``` javascript
+var arr1 = [ 1, NaN, 2, 3, NaN ],
+    arr2 = [ 1, 2, 3 ];
+
+console.log( nanprod( arr1 ) === nanprod( arr2 ) );
+// returns true
+```
+*	If provided an empty `array`, the method returns `null`.
+* 	If provided an `array` with __only__ non-numeric values, the method returns `NaN`.
+
+
 
 ## Examples
 
@@ -39,36 +74,21 @@ var product = nanprod( data );
 var nanprod = require( 'compute-nanprod' );
 
 var data = new Array( 10 );
-
 for ( var i = 0; i < data.length; i++ ) {
 	if ( i%5 === 0 ) {
 		data[ i ] = NaN;
 	} else {
-		data[ i ] = Math.random() + 1;
+		data[ i ] = Math.round( Math.random()*10 ) + 1;
 	}
 }
 
 console.log( nanprod( data ) );
-
 ```
 
 To run the example code from the top-level application directory,
 
 ``` bash
 $ node ./examples/index.js
-```
-
-
-## Notes
-
-The product of an array containing non-numeric values is equal to the product of an equivalent array which contains only the numeric values. Hence,
-
-``` javascript
-var d1 = [ 1, NaN, 2, 3, NaN ],
-    d2 = [ 1, 2, 3 ];
-
-console.log( nanprod( d1 ) === nanprod( d2 ) );
-// returns true
 ```
 
 
